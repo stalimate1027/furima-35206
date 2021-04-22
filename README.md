@@ -32,8 +32,7 @@
 | user               | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :users
-- has_one :shipping_address
+- belongs_to :user
 - has_one :buy_record
 
 ## shipping_address テーブル
@@ -49,7 +48,7 @@
 | buy_record     | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :buy_records
+belongs_to :buy_record
 
 ## buy_records テーブル
 
