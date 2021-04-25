@@ -1,7 +1,7 @@
-<%= render "shared/second-header"%>
+<%= render "shared/second-header" %>
 
 <%# 「モデル名」にはUserモデルであれば@userを渡しましょう。「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/registrations#createへのパスを確認し、記載してください。 %>
-<%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
+<%= form_with model: @user, url:  user_registration_path, class: 'registration-main', local: true do |f| %>
 <%# //「モデル名」にはUserモデルであれば@userを渡しましょう。「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/registrations#createへのパスを確認し、記載してください。 %>
 <div class='form-wrap'>
   <div class='form-header'>
@@ -11,7 +11,7 @@
   </div>
 
   <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-  <%# render 'shared/error_messages', model: f.object %>
+  <%= render 'shared/error_messages', model: f.object %>
   <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
   <div class="form-group">
@@ -33,7 +33,7 @@
       <label class="form-text">パスワード</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.password_field :encrypted_password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
+    <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
     <p class='info-text'>※英字と数字の両方を含めて設定してください</p>
   </div>
   <div class="form-group">
@@ -79,7 +79,7 @@
     <div class='input-birth-wrap'>
       <%= raw sprintf(
                   f.date_select(
-                    :hoge,
+                    :birth_day,
                     class:'select-birth',
                     id:"birth-date",
                     use_month_numbers: true,

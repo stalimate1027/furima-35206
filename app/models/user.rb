@@ -7,8 +7,6 @@ class User < ApplicationRecord
   has_many :items
   has_many :buy_records
 
-  validates :email,                 presence: true
-  validates :encrypted_password,    presence: true
   validates :password_confirmation, presence: true
   validates :nickname,              presence: true
   validates :family_name,           presence: true
