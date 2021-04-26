@@ -3,11 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  has_many :items
-  has_many :buy_records
   
-  validates :nickname,              presence: true
+  with_options presence: true do
+    validates :nickname
+    validates :birth_day
+  end
+  
   validates :email,                 uniqueness: { case_sensitive: true }
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
@@ -20,10 +21,8 @@ class User < ApplicationRecord
   validates :first_name
   end
 
-  with_options presence: true, format: { with: /\A[ァ-ヶ]+\z/, message: "can't be Half-width character" } do
+  with_options presence: true, format: { with: /\A[ァ-ヶー-]+\z/, message: "can't be Half-width character" } do
   validates :family_name_kana
   validates :first_name_kana
   end
-
-  validates :birth_day,             presence: true
 end
