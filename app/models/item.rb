@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category, :status, :shipping_source_id, :prefecture_id, :delivery_day_id
 
-  validates :prodcut,            presence: true
+  validates :product,            presence: true
   validates :text,               presence: true
   validates :category_id,        numericality: { other_than: 0 }
   validates :status_id,          numericality: { other_than: 0 }
