@@ -117,7 +117,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
 
-      it 'first_name_kanaが全角出ないと登録できない' do
+      it 'first_name_kanaが全角でないと登録できない' do
         @user.first_name_kana = 'aaa'
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be Half-width character")
@@ -129,7 +129,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Family name kana can't be blank")
       end
 
-      it 'family_name_kanaが全角出ないと登録できない' do
+      it 'family_name_kanaが全角でないと登録できない' do
         @user.family_name_kana = 'aaa'
         @user.valid?
         expect(@user.errors.full_messages).to include("Family name kana can't be Half-width character")
