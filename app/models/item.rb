@@ -3,7 +3,11 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category, :status, :shipping_source, :prefecture, :delivery_day
+  belongs_to :category
+  belongs_to :status
+  belongs_to :shipping_source
+  belongs_to :prefecture
+  belongs_to :delivery_day
 
   with_options presence: true do
     validates :product, length: { maximum: 40 }
