@@ -2,12 +2,12 @@ FactoryBot.define do
   factory :item do
     product            {Faker::Games::Pokemon.name}
     text               {Faker::Lorem.sentence}
-    category_id        {'2'}
-    status_id          {'2'}
-    price              {'500'}
-    prefecture_id      {'2'}
-    shipping_source_id {'2'}
-    delivery_day_id    {'2'}
+    category_id        {2}
+    status_id          {2}
+    price              {500}
+    prefecture_id      {2}
+    shipping_source_id {2}
+    delivery_day_id    {2}
     
     association :user
 

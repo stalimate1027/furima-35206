@@ -50,31 +50,31 @@ RSpec.describe Item, type: :model do
       end
 
       it 'category_idが0では保存できない' do
-        @item.category_id = '0'
+        @item.category_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
       it 'status_idが0では保存できない' do
-        @item.status_id = '0'
+        @item.status_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank")
       end
 
       it 'shipping_source_idが0では保存できない' do
-        @item.shipping_source_id = '0'
+        @item.shipping_source_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping source can't be blank")
       end
 
       it 'prefecture_idが0では保存できない' do
-        @item.prefecture_id = '0'
+        @item.prefecture_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
 
       it 'delivery_day_idが0では保存できない' do
-        @item.delivery_day_id = '0'
+        @item.delivery_day_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery day can't be blank")
       end
@@ -86,13 +86,13 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが0~299の間の値では保存できない' do
-        @item.price = '150'
+        @item.price = 150
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
 
       it 'priceが9999999以上の値では保存できない' do
-        @item.price = '10000000'
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
@@ -107,6 +107,18 @@ RSpec.describe Item, type: :model do
         @item.price = '１５００'
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not included in the list", "Price is not a number")
+      end
+
+      it 'priceが半角英字では保存できない' do
+        @item.price = 'aaa'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number", "Price is not included in the list")
+      end
+
+      it 'priceが半角英数字混合では保存できない' do
+        @item.price = 'aaa111'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number", "Price is not included in the list")
       end
 
     end
