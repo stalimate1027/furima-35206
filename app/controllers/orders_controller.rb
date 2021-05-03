@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
+  before_action :chack_user
 
   def index
     @order = Order.new
@@ -33,5 +35,11 @@ class OrdersController < ApplicationController
         card: buy_recode_params[:token],
         currency: 'jpy'
       )
+  end
+
+  def chack_user
+    if current_user.id == @item.user_id || @item.buy_record
+      redirect_to root_path
+    end
   end
 end
