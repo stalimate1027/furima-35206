@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
+
   def index
     @order = Order.new
   end
