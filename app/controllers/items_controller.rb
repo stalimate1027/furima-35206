@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
   end
 
   def chack_user
-    unless current_user.id == @item.user_id
+    if current_user.id != @item.user_id || @item.buy_record != nil
       render action: :index
     end
   end
