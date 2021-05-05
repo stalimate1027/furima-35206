@@ -2,9 +2,9 @@ ja:
   activerecord:
     attributes:
       user:
-        nickname:  ニックネーム
-        birth_day: 生年月日
-        family_name: 名字
-        first_name: 名前
+        nickname:         ニックネーム
+        birth_day:        生年月日
+        family_name:      名字
+        first_name:       名前
         family_name_kana: 名字(カナ)
-        first_name_kana: 名前(カナ)
+        first_name_kana:  名前(カナ)
