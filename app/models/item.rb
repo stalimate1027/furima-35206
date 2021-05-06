@@ -16,7 +16,7 @@ class Item < ApplicationRecord
     validates :image
   end
 
-  with_options numericality: { other_than: 0, message: "can't be blank" } do
+  with_options numericality: { other_than: 0, message: "を選択してください" } do
     validates :category_id
     validates :status_id
     validates :prefecture_id
@@ -24,8 +24,8 @@ class Item < ApplicationRecord
     validates :delivery_day_id
   end
 
-  validates              :price,   numericality: { with: /\A[0-9]+\z/ }
-  validates_inclusion_of :price,   in: 300..9999999
+  validates              :price,   numericality: { with: /\A[0-9]+\z/, message: "は半角数字で入力してください" }
+  validates_inclusion_of :price,   in: 300..9999999, message: "は300〜9999999の範囲で入力してください"
 
 
 end
